@@ -4,4 +4,4 @@ LARA or LAptop Recommendation Algorithm is an approach to automating one of the 
 
 This requires me to create a database of existing laptops in the Bangladesh's Laptop Market with their current prices, which is a teadious job to do. And do the queries to find the recommendation based on the questions/inforamtion the program asked from the user.
 
-# THIS IS WORK IN PROGRESS SO BARE WITH ME HERE
+# THIS IS WORK IN PROGRESS, SO PLEASE BEAR WITH ME HERE
