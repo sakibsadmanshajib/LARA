@@ -1,20 +1,30 @@
+import csv
+
 def addLaptop(brand, model, cpu, ram, gpu, ssd, hdd, price, lists):
 
     laptop = {}
 
-    laptop['Brand'] = brand
-    laptop['Model'] = model
-    laptop['Processor'] = cpu
-    laptop['Memory'] = ram
-    laptop['Graphics'] = gpu
-    laptop['SSD'] = ssd
-    laptop['HDD'] = hdd
-    laptop['Price'] = price
+    laptop['brand'] = brand
+    laptop['model'] = model
+    laptop['cpu'] = cpu
+    laptop['ram'] = ram
+    laptop['gpu'] = gpu
+    laptop['ssd'] = ssd
+    laptop['hdd'] = hdd
+    laptop['price'] = price
 
     lists.append(laptop)
 
-Laptoplist = []
+def importLaptop(file, lists):
+    with open(file, newline='') as csvfile:
+        spamreader = csv.reader(csvfile, delimiter = ' ', quotechar = '|')
+        for row in spamreader:
+            comp = row[0].split(',')
+            addLaptop(comp[0], comp[1], comp[2], comp[3], comp[4], comp[5], comp[6], comp[7], lists)
+    
+Laptops = []
 
-addLaptop("ASUS", "S510UQ", "Core i5 8250U", "8GB DDR4", "NVIDIA GeForce MX150", "128GB NVMe", "1TB 5200", 64000, Laptoplist)
+importLaptop('Laptops.csv', Laptops)
 
-print(Laptoplist)
+print(Laptops)
+#def removeLaptop(brand, model, cpu, ram, gpu, lists):
