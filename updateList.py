@@ -34,3 +34,13 @@ def removeLaptop(brand, model, cpu, ram, gpu, lists):
             
         else:
             print("Sorry, the item you are trying to delete is not in the database.")
+
+def editLaptop(brand, model, cpu, ram, gpu, type, change, lists):
+
+    for record in lists:
+
+        if record['brand'] == brand and record['model'] == model and record['cpu'] == cpu and record['ram'] == ram and record['gpu'] == gpu:
+            record[type] = change
+            
+        else:
+            print("Sorry, the item you are trying to edit is not in the database.")
