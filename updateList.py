@@ -16,19 +16,18 @@ def addLaptop(lists):
     hdd = input("What is the HDD Configuration? ")
     price = input("What is the price? ")
 
-    lists.append(Laptop(id, brand, model, cpu, ram, gpu, ssd, hdd, int(price)))
+    lists.append(Laptop(int(id), brand, model, cpu, ram, gpu, ssd, hdd, float(price)))
 
 def importLaptop(file):
 
     LPList = []
 
     with open(file, newline='') as csvfile:
-        spamreader = csv.reader(csvfile, delimiter = ' ', quotechar = '|')
+        reader = csv.reader(csvfile, delimiter = ',')
 
-        for row in spamreader:
+        for row in reader:
 
-            comp = row[0].split(',')
-            LPList.append(Laptop(comp[0], comp[1], comp[2], comp[3], comp[4], comp[5], comp[6], comp[7], int(comp[8])))
+            LPList.append(Laptop(int(row[0]), row[1], row[2], row[3], row[4], row[5], row[6], row[7], float(row[8])))
 
     return LPList
     
@@ -54,7 +53,7 @@ def editLaptop(id, lists):
 
             if type == 1:
                 change = input("What is the updated CPU model? ")
-                record.changeCPU(change)
+                record.changeCPU(int(change))
 
             elif type == 2:
                 change = input("What is the updated Memory Configuration? ")
@@ -74,7 +73,7 @@ def editLaptop(id, lists):
 
             elif type == 6:
                 change = input("What is the updated price? ")
-                record.chanegPrice(int(change))
+                record.chanegPrice(float(change))
 
             else:
                 print("Wrong input.")
@@ -84,8 +83,8 @@ def editLaptop(id, lists):
 
 def updateCSV(lists, file):
     with open(file, 'w', newline='') as csvfile:
-        spamwriter = csv.writer(csvfile, delimiter=' ', quotechar='|', quoting=csv.QUOTE_MINIMAL)
+        writer = csv.writer(csvfile)
 
         for record in lists:
-            out = record.id + "," + record.brand + "," + record.model + "," + record.cpu + "," + record.ram + "," + record.gpu + "," + record.ssd + "," + record.hdd + "," + str(record.price)
-            spamwriter.writerow(out)
+            out = [record.id, record.brand, record.model, record.cpu, record.ram, record.gpu, record.ssd, record.hdd, record.price]
+            writer.writerow(out)
