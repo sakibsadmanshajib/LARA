@@ -18,6 +18,8 @@ def addLaptop(lists):
 
     lists.append(Laptop(int(id), brand, model, cpu, ram, gpu, ssd, hdd, float(price)))
 
+    print("The Laptop has been added.")
+
 def importLaptop(file):
 
     LPList = []
@@ -30,6 +32,8 @@ def importLaptop(file):
             LPList.append(Laptop(int(row[0]), row[1], row[2], row[3], row[4], row[5], row[6], row[7], float(row[8])))
 
     return LPList
+
+    print("The database has been imported.")
     
 def removeLaptop(id, lists):
     
@@ -37,9 +41,8 @@ def removeLaptop(id, lists):
 
         if record.id == id:
             lists.remove(record)
-            
-        else:
-            print("Sorry, the item you are trying to delete is not in the database.")
+
+    print("The Laptop has been removed.")
 
 def editLaptop(id, lists):
 
@@ -49,7 +52,7 @@ def editLaptop(id, lists):
 
         if record.id == id:
             
-            type = input("What are you trying to input? (Input the index) \n1. CPU \n2. RAM \n3. GPU \n4. SSD \n5. HDD \n6. Price \nYour choice: ")
+            type = int(input("What are you trying to input? (Input the index) \n1. CPU \n2. RAM \n3. GPU \n4. SSD \n5. HDD \n6. Price \nYour choice: "))
 
             if type == 1:
                 change = input("What is the updated CPU model? ")
@@ -78,8 +81,7 @@ def editLaptop(id, lists):
             else:
                 print("Wrong input.")
 
-        else:
-            print("Sorry, the item you are trying to edit is not in the database.")
+    print("The laptop has been edited.")
 
 def updateCSV(lists, file):
     with open(file, 'w', newline='') as csvfile:
@@ -88,3 +90,5 @@ def updateCSV(lists, file):
         for record in lists:
             out = [record.id, record.brand, record.model, record.cpu, record.ram, record.gpu, record.ssd, record.hdd, record.price]
             writer.writerow(out)
+
+    print("The database has been updated.")
