@@ -1,11 +1,13 @@
+from Laptop import *
 from updateList import *
 
-Laptops = []
+laptop = importLaptop('Laptops.csv')
 
-importLaptop('Laptops.csv', Laptops)
+print(laptop)
 
-print(Laptops)
+#addLaptop(laptop)
 
-removeLaptop('ASUS', 'N580VD', '7700HQ', '16G4', 'GTX1050', Laptops)
+#updateCSV(laptop, "Laptops.csv")
 
-print(Laptops)
+#for record in laptop:
+#    print(record.id + "," + record.brand + "," + record.model + "," + record.cpu + "," + record.ram + "," + record.gpu + "," + record.ssd + "," + record.hdd + "," + str(record.price))
