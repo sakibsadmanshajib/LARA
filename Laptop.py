@@ -1,6 +1,7 @@
 class Laptop(object):
 
-    def __init__(self, brand, model, cpu, ram, gpu, ssd, hdd, price):
+    def __init__(self, id, brand, model, cpu, ram, gpu, ssd, hdd, price):
+        self.id = id
         self.brand = brand
         self.model = model
         self.cpu = cpu
@@ -13,20 +14,21 @@ class Laptop(object):
     def __repr__(self):
         str = self.brand + self.model
         return str
+
+    def changeCPU(self, cpu):
+        self.cpu = cpu
     
-        
-    def removeLaptop(self, brand, model, cpu, ram, gpu):
+    def changeRAM(self, ram):
+        self.ram = ram
 
-        if self.brand == brand and self.model == model and self.cpu == cpu and self.ram == ram and self.gpu == gpu:
-            del self
-                
-        else:
-            print("Sorry, the item you are trying to delete is not in the database.")
+    def changeGPU(self, gpu):
+        self.gpu = gpu
 
-    def editLaptop(self, brand, model, cpu, ram, gpu, type, change):
+    def changeSSD(self, ssd):
+        self.ssd = ssd
 
-        if self.brand == brand and self.model == model and self.cpu == cpu and self.ram == ram and self.gpu == gpu:
-            self.type = change
-                
-        else:
-            print("Sorry, the item you are trying to edit is not in the database.")
+    def changeHDD(self, hdd):
+        self.hdd = hdd
+
+    def changePrice(self, price):
+        self.price = price
