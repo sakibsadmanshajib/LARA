@@ -1,5 +1,6 @@
 from UpdateList import *
 from Password import *
+import getpass
 
 laptop = importLaptop()
 hashed_pass = "dec0cd2d7d4eed7e27afc99b61e2d148f5aa8d578d8eba637f65612272cbd1d16992d852b8b7ceb0d7f500df75f4e670ffb58a65a6200021d51bc1fd4bcd4ec2:5161ae90a3354f9ba86f615c461b8b0d"
@@ -8,10 +9,10 @@ choice = int(input("Hey there! Thank you for beta testing my program. I have alr
 
 if choice == 1:
 
-    password = input("Say the magic word: ")
+    password = getpass.getpass("Say the magic word: ")
 
     if check_password(hashed_pass, password):
-        sub_choice = int(input("What do you want to do? (Input the Index only) \n1. Add Laptop \n2. Import from CSV (again) \n3. Remove Laptop \n4. Edit Laptop \n5. Update CSV File \nYour Choice: "))
+        sub_choice = int(input("What do you want to do? (Input the Index only) \n1. Add Laptop \n2. Import Laptop from CSV (again) \n3. Remove Laptop \n4. Edit Laptop \n5. Update Laptop CSV File \nYour Choice: "))
         if sub_choice == 1:
             addLaptop(laptop)
         elif sub_choice == 2:
