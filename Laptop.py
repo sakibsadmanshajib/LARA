@@ -1,3 +1,5 @@
+import csv
+
 class Laptop(object):
 
     def __init__(self, id, brand, model, cpu, ram, gpu, ssd, hdd, price):
@@ -12,7 +14,7 @@ class Laptop(object):
         self.price = price
     
     def __repr__(self):
-        str = self.brand + self.model
+        str = "\n%s \nSpecification: \nModel: %s\nProcessor: %s\nMemory: %s\nGraphics: %s\nStorage: %s\nPrice: %.2f" % (modelDetail(self, importmodelDetails()), self.model, CPUDetails(self, importCPUDetails()), self.ram, self.gpu, self.ssd, self.price)
         return str
 
     def changeCPU(self, cpu):
@@ -32,3 +34,121 @@ class Laptop(object):
 
     def changePrice(self, price):
         self.price = price
+
+def CPUDetails(self, lists):
+    for items in lists:
+        if items['cpu'] == self.cpu:
+            return items['det']
+
+def importCPUDetails():
+    CPUDetailList = []
+
+    with open('CPUDetails.csv', newline='') as csvfile:
+        reader = csv.reader(csvfile, delimiter = ',')
+
+        for row in reader:
+            CPUDetail = {}
+            CPUDetail['cpu'] = row[0]
+            CPUDetail['archi'] = row[1]
+            CPUDetail['det'] = row[2]
+            CPUDetail['cores'] = int(row[3])
+            CPUDetail['threads'] = int(row[4])
+            CPUDetail['base'] = float(row[5])
+            CPUDetail['boost'] = float(row[6])
+            CPUDetail['cache'] = float(row[7])
+            CPUDetail['tdp'] = float(row[8])
+            CPUDetail['igpu'] = row[9]
+            CPUDetailList.append(CPUDetail)
+        
+    return CPUDetailList
+
+    print("The CPU database has been successfully imported.")
+
+def modelDetail(self, lists):
+    for items in lists:
+        if self.brand == items['brand'] and self.model == items['model']:
+            return items['det']
+
+def importmodelDetails():
+    modelDetailList = []
+
+    with open('ModelDetails.csv', newline='') as csvfile:
+        reader = csv.reader(csvfile, delimiter = ',')
+
+        for row in reader:
+            modelDetail = {}
+            modelDetail['brand'] = row[0]
+            modelDetail['model'] = row[1]
+            modelDetail['det'] = row[2]
+            modelDetailList.append(modelDetail)
+
+    return modelDetailList
+    
+    print("The model database has been successfully imported.")
+
+def addModelDetails(lists, self, det):
+    modelDetail = {
+        'brand' : self.brand,
+        'model' : self.model,
+        'det' : det
+    }
+
+    lists.append(modelDetail)
+
+    print("The new model details has been added.")
+
+def removeModelDetails(lists, self):
+    
+    for items in lists:
+        if self.brand == items['brand'] and self.model == items['model']:
+            lists.remove(items)
+
+    print("The model details has been deleted.")
+
+def editModelDetails(lists, self, det):
+
+    for items in lists:
+        if self.brand == items['brand'] and self.model == items['model']:
+            items['det'] = det
+
+    print("The model details has been edited")
+
+def updateModelCSV(lists):
+
+    with open('ModelDetails.csv', 'w', newline='') as csvfile:
+        writer = csv.writer(csvfile)
+
+        for record in lists:
+            out = [record['brand'], record['model'], record['det']]
+            writer.writerow(out)
+
+    print("The model details database has been updated.")
+
+def RAMDetails(self, lists):
+    
+    for item in lists:
+        if item['ram'] == self.ram:
+            return item['det']
+
+def GPUDetails(self, lists):
+
+    for item in lists:
+        if item['gpu'] == self.gpu:
+            return item['det']
+
+def StorageDetails(self, lists):
+
+    storage = ""
+
+    if self.ssd != '0':
+        for item in lists:
+            if item['ssd'] == self.ssd:
+                storage = storage + item['det']
+
+        if self.hdd != '0':
+            storage = storage + " and "
+            for item in lists:
+                if item['hdd'] == self.hdd:
+                    storage = storage + item['det']
+
+    return storage

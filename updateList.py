@@ -1,4 +1,4 @@
-from Laptop import *
+from Laptop import Laptop
 
 import csv
 
@@ -20,11 +20,11 @@ def addLaptop(lists):
 
     print("The Laptop has been added.")
 
-def importLaptop(file):
+def importLaptop():
 
     LPList = []
 
-    with open(file, newline='') as csvfile:
+    with open('Laptops.csv', newline='') as csvfile:
         reader = csv.reader(csvfile, delimiter = ',')
 
         for row in reader:
@@ -83,8 +83,8 @@ def editLaptop(id, lists):
 
     print("The laptop has been edited.")
 
-def updateCSV(lists, file):
-    with open(file, 'w', newline='') as csvfile:
+def updateCSV(lists):
+    with open('Laptops.csv', 'w', newline='') as csvfile:
         writer = csv.writer(csvfile)
 
         for record in lists:
