@@ -1,4 +1,4 @@
-from Laptop import Laptop
+from Laptop import *
 
 import csv
 
@@ -6,7 +6,7 @@ def addLaptop(lists):
 
     print("See the instruction manual before proceeding to use this function. You can find the instruction manual in the root directory of this program.")
 
-    id = len(lists)
+    ID = len(lists)
     brand = input("What is the brand of the Laptop? ")
     model = input("What is the model number? ")
     cpu = input("What is the CPU model? ")
@@ -16,7 +16,7 @@ def addLaptop(lists):
     hdd = input("What is the HDD Configuration? ")
     price = input("What is the price? ")
 
-    lists.append(Laptop(int(id), brand, model, cpu, ram, gpu, ssd, hdd, float(price)))
+    lists.append(Laptop(int(ID), brand, model, cpu, ram, gpu, ssd, hdd, float(price)))
 
     print("The Laptop has been added.")
 
@@ -35,22 +35,22 @@ def importLaptop():
 
     print("The database has been imported.")
     
-def removeLaptop(id, lists):
+def removeLaptop(ID, lists):
     
     for record in lists:
 
-        if record.id == id:
+        if record.ID == ID:
             lists.remove(record)
 
     print("The Laptop has been removed.")
 
-def editLaptop(id, lists):
+def editLaptop(ID, lists):
 
     print("See the instruction manual before proceeding to use this function. You can find the instruction manual in the root directory of this program.")
 
     for record in lists:
 
-        if record.id == id:
+        if record.ID == ID:
             
             type = int(input("What are you trying to input? (Input the index) \n1. CPU \n2. RAM \n3. GPU \n4. SSD \n5. HDD \n6. Price \nYour choice: "))
 
@@ -88,7 +88,7 @@ def updateCSV(lists):
         writer = csv.writer(csvfile)
 
         for record in lists:
-            out = [record.id, record.brand, record.model, record.cpu, record.ram, record.gpu, record.ssd, record.hdd, record.price]
+            out = [record.ID, record.brand, record.model, record.cpu, record.ram, record.gpu, record.ssd, record.hdd, record.price]
             writer.writerow(out)
 
     print("The database has been updated.")

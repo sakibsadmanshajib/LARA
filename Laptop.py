@@ -2,8 +2,8 @@ import csv
 
 class Laptop(object):
 
-    def __init__(self, id, brand, model, cpu, ram, gpu, ssd, hdd, price):
-        self.id = id
+    def __init__(self, ID, brand, model, cpu, ram, gpu, ssd, hdd, price):
+        self.ID = ID
         self.brand = brand
         self.model = model
         self.cpu = cpu
@@ -14,7 +14,7 @@ class Laptop(object):
         self.price = price
     
     def __repr__(self):
-        str = "%s \nSpecification: \nModel: %s\nProcessor: %s\nMemory: %s\nGraphics: %s\nStorage: %s\nPrice: %.2f" % (modelDetail(self, importmodelDetails()), self.model, CPUDetails(self, importCPUDetails()), RAMDetails(self, importRAMDetails()), GPUDetails(self, importGPUDetails()), StorageDetails(self, importStorageDetails()), self.price)
+        str = "\n%s \nSpecification: \nModel: %s\nProcessor: %s\nMemory: %s\nGraphics: %s\nStorage: %s\nPrice: %.2f\n###############" % (modelDetail(self, importmodelDetails()), self.model, CPUDetails(self, importCPUDetails()), RAMDetails(self, importRAMDetails()), GPUDetails(self, importGPUDetails()), StorageDetails(self, importStorageDetails()), self.price)
         return str
 
     def changeCPU(self, cpu):
