@@ -43,6 +43,10 @@ elif choice == 2:
     lower_budget = int(budget) - 4999
     upper_budget = int(budget) + 5001
 
+    print("Your querry results are:")
+
     for record in laptop:
         if record.price in range(lower_budget, upper_budget):
+            print("###############")
             print(record)
+    print("###############")

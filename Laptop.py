@@ -14,7 +14,7 @@ class Laptop(object):
         self.price = price
     
     def __repr__(self):
-        str = "\n%s \nSpecification: \nModel: %s\nProcessor: %s\nMemory: %s\nGraphics: %s\nStorage: %s\nPrice: %.2f" % (modelDetail(self, importmodelDetails()), self.model, CPUDetails(self, importCPUDetails()), self.ram, self.gpu, self.ssd, self.price)
+        str = "%s \nSpecification: \nModel: %s\nProcessor: %s\nMemory: %s\nGraphics: %s\nStorage: %s\nPrice: %.2f" % (modelDetail(self, importmodelDetails()), self.model, CPUDetails(self, importCPUDetails()), RAMDetails(self, importRAMDetails()), GPUDetails(self, importGPUDetails()), StorageDetails(self, importStorageDetails()), self.price)
         return str
 
     def changeCPU(self, cpu):
@@ -130,11 +130,52 @@ def RAMDetails(self, lists):
         if item['ram'] == self.ram:
             return item['det']
 
+def importRAMDetails():
+    RAMDetailList = []
+
+    with open('RAMDetails.csv', newline='') as csvfile:
+        reader = csv.reader(csvfile, delimiter = ',')
+
+        for row in reader:
+            RAMDetail = {}
+            RAMDetail['ram'] = row[0]
+            RAMDetail['size'] = row[1]
+            RAMDetail['type'] = row[2]
+            RAMDetail['bus'] = row[3]
+            RAMDetail['det'] = row[4]
+            RAMDetailList.append(RAMDetail)
+        
+    return RAMDetailList
+
+    print("The RAM database has been successfully imported.")
+
 def GPUDetails(self, lists):
 
     for item in lists:
         if item['gpu'] == self.gpu:
             return item['det']
+
+def importGPUDetails():
+    GPUDetailList = []
+
+    with open('GPUDetails.csv', newline='') as csvfile:
+        reader = csv.reader(csvfile, delimiter = ',')
+
+        for row in reader:
+            GPUDetail = {}
+            GPUDetail['gpu'] = row[0]
+            GPUDetail['type'] = row[1]
+            GPUDetail['chip'] = row[2]
+            GPUDetail['bus'] = row[3]
+            GPUDetail['boost'] = row[4]
+            GPUDetail['vram'] = row[5]
+            GPUDetail['vramtype'] = row[6]
+            GPUDetail['det'] = row[7]
+            GPUDetailList.append(GPUDetail)
+        
+    return GPUDetailList
+
+    print("The GPU database has been successfully imported.")
 
 def StorageDetails(self, lists):
 
@@ -150,5 +191,27 @@ def StorageDetails(self, lists):
             for item in lists:
                 if item['hdd'] == self.hdd:
                     storage = storage + item['det']
+    
+    else:
+        for item in lists:
+            if item['hdd'] == self.hdd:
+                storage = storage + item['det']
 
     return storage
+
+def importStorageDetails():
+    StorageDetailList = []
+
+    with open('StorageDetails.csv', newline='') as csvfile:
+        reader = csv.reader(csvfile, delimiter = ',')
+
+        for row in reader:
+            StorageDetail = {}
+            StorageDetail['ssd'] = row[0]
+            StorageDetail['hdd'] = row[1]
+            StorageDetail['det'] = row[2]
+            StorageDetailList.append(StorageDetail)
+        
+    return StorageDetailList
+
+    print("The Storage database has been successfully imported.")
