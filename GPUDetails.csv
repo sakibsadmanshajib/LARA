@@ -1,7 +1,20 @@
 dGTX10504G5,d,GTX1050,0,0,4,GDDR5,NVIDIA GeForce GTX 1050 4 GB GDDR5
 iHD505,i,HD505,0,0,0,0,Intel HD Graphics 505
-dR54202,d,R5420,0,0,2,DDR3,AMD Radeon R5420 2 GB
+dR54202D3,d,R5420,0,0,2,DDR3,AMD Radeon R5420 2 GB
 iHD500,i,HD500,0,0,0,0,Intel HD Graphics 500
 iUHD600,i,UHD600,0,0,0,0,Intel UHD Graphics 600
 dR2,d,HD505,0,0,0,0,AMD Radeon R2 Series
 iHD620,i,HD620,0,0,0,0,Intel HD Graphics 620
+Shared,i,0,0,0,0,0,Integrated GPU (Record to be updated)
+dMX1302G5,d,,,,,,Dedicated GPU (Record to be updated)
+dMX1504G5,d,,,,,,Dedicated GPU (Record to be updated)
+dGT9402D3,d,,,,,,Dedicated GPU (Record to be updated)
+dMX1502G5,d,,,,,,Dedicated GPU (Record to be updated)
+dGTX1050T4G5,d,,,,,,Dedicated GPU (Record to be updated)
+dGTX10606G5,d,,,,,,Dedicated GPU (Record to be updated)
+dGTX10708G5,d,,,,,,Dedicated GPU (Record to be updated)
+dGTX10808G5,d,,,,,,Dedicated GPU (Record to be updated)
+dGTX106016G5,d,,,,,,Dedicated GPU (Record to be updated)
+dMX1102G5,d,,,,,,Dedicated GPU (Record to be updated)
+dGT9302G5,d,,,,,,Dedicated GPU (Record to be updated)
+dGT9302D3,d,,,,,,Dedicated GPU (Record to be updated)

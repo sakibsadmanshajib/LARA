@@ -4,3 +4,7 @@
 0,500G,500 GB HDD
 0,1T,1 TB HDD
 0,2T,2 TB HDD
+0,0,No information
+1T,0,1 TB SSD
+1.5T,0,1.5 TB SSD
+0,1T+8G,1 TB SSHD (8 GB Cache)
